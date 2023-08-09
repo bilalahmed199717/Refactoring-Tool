@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- Commands -->
+   <extension point="org.eclipse.ui.commands">
+      <command
+         categoryId="org.eclipse.ui.category.file"
+         id="com.example.refactoringtool.extractMethodCommand"
+         name="Extract Method">
+      </command>
+      <command
+         id="com.example.refactoringtool.commands.checkCodeDuplication"
+         name="Code Duplication">
+      </command>
+   </extension>
+
+   <!-- Command Handlers -->
+   <extension point="org.eclipse.ui.handlers">
+      <handler
+         class="com.example.refactoringtool.extractmethod.ExtractMethodHandler"
+         commandId="com.example.refactoringtool.extractMethodCommand">
+      </handler>
+      <handler
+         class="com.example.refactoringtool.codeduplication.CodeDuplicationHandler"
+         commandId="com.example.refactoringtool.commands.checkCodeDuplication">
+      </handler>
+   </extension>
+
+   <!-- Menu Contribution -->
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu id="com.example.refactoringtool.menu" label="Refactoring Tool">
+            <command commandId="com.example.refactoringtool.extractMethodCommand" label="Extract Method" />
+            <command commandId="com.example.refactoringtool.commands.checkCodeDuplication" label="Check Code Duplication" />
+         </menu>
+      </menuContribution>
+   </extension>
+
+   <!-- Editor Extensions -->
+   <extension point="org.eclipse.ui.editors">
+      <!-- Add any required editor extensions here -->
+   </extension>
+   
+   <!-- Key Bindings -->
+   <extension point="org.eclipse.ui.bindings">
+      <key
+         commandId="com.example.refactoringtool.extractMethodCommand"
+         contextId="org.eclipse.ui.contexts.window"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="M2+M">
+      </key>
+   </extension>
+</plugin>
